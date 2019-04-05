@@ -13,7 +13,6 @@ void predit() {
     int leaveCusNum = customNum;
     int curCustom = 0;
     for(int t = 0; t < 540; ++t) {
-        
         if(debug) {
             cout << endl << "t" << t;
             cout << endl << "result:" ;
@@ -56,7 +55,6 @@ void predit() {
                     mini = i;
                 }
             }
-            // cout << mini << endl;
             if(window[mini].size() < maxLine) {
                 full = 0;
                 
@@ -74,7 +72,6 @@ void min2hourmin(int cut) {
     int cutnum = result[cut - 1];
     int hour = 8 + cutnum / 60;
     int min = cutnum % 60;
-    // cout << in[cut - 1] << endl;
     if ( result[cut - 1] == 0 || result[cut - 1] > 599) {
         printf("Sorry\n");
     } else {

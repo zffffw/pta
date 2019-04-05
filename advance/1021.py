@@ -29,14 +29,10 @@ def search2(node, depth):
 if __name__ == "__main__":
     node_num = int(input())
     node_l = [[] for i in range(node_num)]
-    # print(node_num)
     for i in range(node_num - 1):
         tmp = input().split(" ")
-        # print(tmp)
         node_l[int(tmp[0]) - 1].append(int(tmp[1]) - 1)
         node_l[int(tmp[1]) - 1].append(int(tmp[0]) - 1)
-    # print(node_l)
-    
     compno = 0
     searched = []
     maxdepth = 0
