@@ -22,7 +22,7 @@ int main() {
         }
     }
     cout << count;
-    for(int i = 1000; i >= 0; --i) {
+    for(int i = 0; i >= 0; --i) {
         if(e[i] != 0) {
             cout << ' ' << i << ' ' << setiosflags(ios::fixed) << setprecision(1) << e[i];
         }

@@ -2,10 +2,8 @@
 #include <algorithm>
 #include <string>
 using namespace std;
-
 string tmp;
 string res;
-
 int main() {
     int a, b;
     cin >> a >> b;
