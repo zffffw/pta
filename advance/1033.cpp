@@ -3,7 +3,7 @@
 #include <algorithm>
 using namespace std;
 typedef struct node {
-    float price;
+    double price;
     int di;
 } node;
 
@@ -18,14 +18,29 @@ int cmp(node a, node b) {
 int main() {
     scanf("%d %d %d %d", &tank, &dis, &waste, &n);
     node start = {-1, -1};
-    float cost = 0;
+    double cost = 0;
     int curdi = 0;
     for(int i = 0; i < n; ++i) {
-        float p;
+        double p;
         int d;
-        scanf("%f %d", &p, &d);
-        
+        scanf("%lf %d", &p, &d);
+        bool f = false;
         node tmp = {p, d};
+        for(int i = 0; i < v.size(); ++i) {
+            if(v[i].di == d) {
+                if(v[i].price > p) {
+                    v[i].price = p;
+                    if(d == 0) {
+                        start = tmp;
+                    }
+                }
+                f = true;
+                break;
+            }
+        }
+        if(f) {
+            continue;
+        }
         if(d == 0) {
             start = tmp;
         }
@@ -41,11 +56,11 @@ int main() {
     }
     // cout << tank*waste << endl;
     node curstation = start;
-    float curtankdis = 0;
+    double curtankdis = 0;
     bool ok = 0;
     while(1) {
         node nextStation = {-1, -1};
-        float minprice = 100000;
+        double minprice = 100000;
         int flag = 0;
         for(int i = 0; i < v.size(); ++i) {
             if(v[i].di <= curdi + tank*waste && v[i].di > curdi) {
@@ -72,7 +87,12 @@ int main() {
                 cost += curstation.price*(tank*waste - curtankdis);
                 curtankdis = tank*waste;
             } else {
+                // printf("%.2lf\n", cost);
                 cost += curstation.price*(dis - curdi);
+                // cout << curstation.price*(dis - curdi) << endl;
+                // cout << curstation.price << ' ' << curstation.di << ' ' << curdi << ' ' << dis << endl;
+                // // printf("%.2lf\n", cost);
+                
                 curdi = dis;
                 curtankdis = 0;
                 ok = 1;
@@ -85,14 +105,15 @@ int main() {
         curtankdis = curtankdis - (nextStation.di - curdi);
         // cout << flag << ' ' << curdi << ' ' << nextStation.di << ' ' << nextStation.price << ' ' << curtankdis << endl;
         // cout << cost << endl;
+        // printf("%.2lf\n", cost/waste);
         curdi = nextStation.di;
         curstation = nextStation;
     }
 
     if(curdi + tank*waste < dis) {
-        printf("The maximum travel distance = %.2f", (float)(curdi + tank*waste));
+        printf("The maximum travel distance = %.2lf", (double)(curdi + tank*waste));
     } else {
-        // cout << curtankdis << ' ' << curdi << endl;
+        // cout << curtankdis << ' ' << curdi << ' ' << ok << endl;
         if(!ok) {
             cost += curstation.price*(dis - curdi - curtankdis);
         }

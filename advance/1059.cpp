@@ -13,23 +13,24 @@ int main() {
     int flag = 1;
     while(num > 1) {
         int cnt = 0;
+        // cout << k << endl;
         while(num % k == 0) {
             cnt ++;
             num /= k;
         }
-        if (cnt == 1) {
-            if(!flag) {
-                putchar('*');
-            }
-            printf("%d", k);
-            flag = 0;
-        } else if (cnt != 0){
-            if(!flag) {
-                putchar('*');
-            }
-            printf("%d^%d", k, cnt);
-            flag = 0;
-        }
+        // if (cnt == 1) {
+        //     if(!flag) {
+        //         putchar('*');
+        //     }
+        //     printf("%d", k);
+        //     flag = 0;
+        // } else if (cnt != 0){
+        //     if(!flag) {
+        //         putchar('*');
+        //     }
+        //     printf("%d^%d", k, cnt);
+        //     flag = 0;
+        // }
         k++;
     }
     cout << endl;

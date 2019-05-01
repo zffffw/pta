@@ -1,7 +1,7 @@
 #include <iostream>
 #include <math.h>
 using namespace std;
-int n;
+long long int n;
 
 int main() {
     cin >> n;
